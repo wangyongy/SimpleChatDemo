@@ -25,8 +25,6 @@
     [super viewDidLoad];
     
     self.title = @"路人甲";
-   
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [UdpManager initSocketWithReceiveHandle:^{
 
@@ -135,8 +133,6 @@
     }
     
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     MessageModel * model = UdpManager.messageArray[indexPath.row];
     
