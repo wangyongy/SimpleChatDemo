@@ -49,8 +49,6 @@
     
     NSInteger _destPort;
     
-    void(^_sendBlock)(NSString *);
-    
     dispatch_block_t _receiveBlock;
 }
 
@@ -106,7 +104,7 @@
     
     // 绑定一个端口(可选),如果不绑定端口, 那么就会随机产生一个随机的唯一的端口
     // 端口数字范围(1024,2^16-1)
-    [_receiveSocket bindToPort:test_port error:&error];
+    [_receiveSocket bindToPort:_destPort error:&error];
     
     if (error) {
         NSLog(@"服务器绑定失败");
