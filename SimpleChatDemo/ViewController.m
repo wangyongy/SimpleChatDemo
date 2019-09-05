@@ -93,11 +93,13 @@
     
     NSValue *value = [useInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
     
+    if([sender.name isEqualToString:UIKeyboardWillShowNotification]) self.toBottom.constant = -[value CGRectValue].size.height;
+    
+    else self.toBottom.constant = 0;
+    
     [UIView animateWithDuration:[[useInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey] floatValue]  animations:^{
         
-        if([sender.name isEqualToString:UIKeyboardWillShowNotification]) self.toBottom.constant = -[value CGRectValue].size.height;
-        
-        else self.toBottom.constant = 0;
+        [self.view layoutIfNeeded];
     }];
 }
 #pragma mark - touch
